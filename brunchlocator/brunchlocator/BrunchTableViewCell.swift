@@ -39,7 +39,7 @@ final class BrunchTableViewCell: UITableViewCell {
 
     func configure(grayedOut: Bool, expanded: Bool) {
         if grayedOut {
-            topContainer.alpha = 0.7
+            topContainer.alpha = 0.5
         } else {
             topContainer.alpha = 1.0
         }

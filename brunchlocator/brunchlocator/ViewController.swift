@@ -96,30 +96,23 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITableVi
     // MARK: UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if selectedIndexPath == nil {
-            selectedIndexPath = indexPath
-
-            if let selCell = tableView.cellForRow(at: indexPath) as? BrunchTableViewCell {
-                for cell in tableView.visibleCells {
-                    if cell == selCell {
-                        tableView.reloadRows(at: [indexPath], with: .fade)
-                    } else {
-                        tableView.reloadRows(at: [indexPath], with: .none)
-                    }
+        func reloadWithFade(for fadeIndexPath: IndexPath) {
+            for visibleIP in tableView.indexPathsForVisibleRows ?? [] {
+                if visibleIP == fadeIndexPath {
+                    tableView.reloadRows(at: [indexPath], with: .fade)
+                } else {
+                    tableView.reloadRows(at: [visibleIP], with: .automatic)
                 }
             }
+        }
+
+        if selectedIndexPath == nil {
+            selectedIndexPath = indexPath
+            reloadWithFade(for: indexPath)
         } else {
             let selBefore = selectedIndexPath!
             selectedIndexPath = nil
-            if let selCell = tableView.cellForRow(at: selBefore) as? BrunchTableViewCell {
-                for cell in tableView.visibleCells {
-                    if cell == selCell {
-                        tableView.reloadRows(at: [indexPath], with: .fade)
-                    } else {
-                        tableView.reloadRows(at: [indexPath], with: .none)
-                    }
-                }
-            }
+            reloadWithFade(for: selBefore)
         }
     }
 
