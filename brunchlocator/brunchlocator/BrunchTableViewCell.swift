@@ -45,12 +45,12 @@ final class BrunchTableViewCell: UITableViewCell {
         }
 
         if expanded {
-            topContainterToBottomConstraint.isActive = false
-            topContainerToViewConstraint.isActive = true
-            bottomContainer.isHidden = false
-        } else {
             topContainterToBottomConstraint.isActive = true
             topContainerToViewConstraint.isActive = false
+            bottomContainer.isHidden = false
+        } else {
+            topContainterToBottomConstraint.isActive = false
+            topContainerToViewConstraint.isActive = true
             bottomContainer.isHidden = true
         }
     }

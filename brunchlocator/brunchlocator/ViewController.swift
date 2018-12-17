@@ -62,7 +62,7 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITableVi
 
         tableView.register(UINib(nibName: "BrunchTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: BrunchTableViewCell.reuseIdentifier)
 
-        tableView.estimatedRowHeight = 88.0
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -99,22 +99,33 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITableVi
         if selectedIndexPath == nil {
             selectedIndexPath = indexPath
 
-            tableView.beginUpdates()
-            for cell in tableView.visibleCells {
-                (cell as? BrunchTableViewCell)?.configure(grayedOut: true, expanded: false)
+            if let selCell = tableView.cellForRow(at: indexPath) as? BrunchTableViewCell {
+                for cell in tableView.visibleCells {
+                    if cell == selCell {
+                        tableView.reloadRows(at: [indexPath], with: .fade)
+                    } else {
+                        tableView.reloadRows(at: [indexPath], with: .none)
+                    }
+                }
             }
-            if let cell = tableView.cellForRow(at: indexPath) as? BrunchTableViewCell {
-                cell.configure(grayedOut: false, expanded: true)
-            }
-            tableView.endUpdates()
         } else {
+            let selBefore = selectedIndexPath!
             selectedIndexPath = nil
-
-            tableView.beginUpdates()
-            for cell in tableView.visibleCells {
-                (cell as? BrunchTableViewCell)?.configure(grayedOut: false, expanded: false)
+            if let selCell = tableView.cellForRow(at: selBefore) as? BrunchTableViewCell {
+                for cell in tableView.visibleCells {
+                    if cell == selCell {
+                        tableView.reloadRows(at: [indexPath], with: .fade)
+                    } else {
+                        tableView.reloadRows(at: [indexPath], with: .none)
+                    }
+                }
             }
-            tableView.endUpdates()
+        }
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let selIP = selectedIndexPath?.row, selIP != indexPath.row {
+            (cell as? BrunchTableViewCell)?.configure(grayedOut: true, expanded: false)
         }
     }
 }
