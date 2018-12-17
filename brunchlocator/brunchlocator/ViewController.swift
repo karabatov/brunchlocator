@@ -19,7 +19,7 @@ struct Cafe {
     }
 }
 
-final class ViewController: UIViewController, UISearchResultsUpdating, UITableViewDataSource {
+final class ViewController: UIViewController, UISearchResultsUpdating, UITableViewDataSource, UITableViewDelegate {
     let allItems: [Cafe]
     var items: [Cafe] = []
 
@@ -62,7 +62,9 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITableVi
 
         tableView.register(UINib(nibName: "BrunchTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: BrunchTableViewCell.reuseIdentifier)
 
+        tableView.estimatedRowHeight = 88.0
         tableView.dataSource = self
+        tableView.delegate = self
     }
 
     // MARK: UISearchResultsUpdating
@@ -89,6 +91,31 @@ final class ViewController: UIViewController, UISearchResultsUpdating, UITableVi
         }
 
         return cell
+    }
+
+    // MARK: UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if selectedIndexPath == nil {
+            selectedIndexPath = indexPath
+
+            tableView.beginUpdates()
+            for cell in tableView.visibleCells {
+                (cell as? BrunchTableViewCell)?.configure(grayedOut: true, expanded: false)
+            }
+            if let cell = tableView.cellForRow(at: indexPath) as? BrunchTableViewCell {
+                cell.configure(grayedOut: false, expanded: true)
+            }
+            tableView.endUpdates()
+        } else {
+            selectedIndexPath = nil
+
+            tableView.beginUpdates()
+            for cell in tableView.visibleCells {
+                (cell as? BrunchTableViewCell)?.configure(grayedOut: false, expanded: false)
+            }
+            tableView.endUpdates()
+        }
     }
 }
 

@@ -38,7 +38,21 @@ final class BrunchTableViewCell: UITableViewCell {
     }
 
     func configure(grayedOut: Bool, expanded: Bool) {
+        if grayedOut {
+            topContainer.alpha = 0.7
+        } else {
+            topContainer.alpha = 1.0
+        }
 
+        if expanded {
+            topContainterToBottomConstraint.isActive = false
+            topContainerToViewConstraint.isActive = true
+            bottomContainer.isHidden = false
+        } else {
+            topContainterToBottomConstraint.isActive = true
+            topContainerToViewConstraint.isActive = false
+            bottomContainer.isHidden = true
+        }
     }
 
     override func prepareForReuse() {
