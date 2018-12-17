@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let vc = ViewController(items: cafes)
         let nav = UINavigationController(rootViewController: vc)
+        nav.navigationBar.prefersLargeTitles = true
         window?.rootViewController = nav
 
         window?.makeKeyAndVisible()
