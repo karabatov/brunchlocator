@@ -11,6 +11,8 @@
 		D183FE3B21C8056B0060203D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183FE3A21C8056B0060203D /* ViewController.swift */; };
 		D183FE4021C8056D0060203D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D183FE3F21C8056D0060203D /* Assets.xcassets */; };
 		D183FE4321C8056D0060203D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D183FE4121C8056D0060203D /* LaunchScreen.storyboard */; };
+		D183FE4C21C811D30060203D /* BrunchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D183FE4A21C811D30060203D /* BrunchTableViewCell.swift */; };
+		D183FE4D21C811D30060203D /* BrunchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D183FE4B21C811D30060203D /* BrunchTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		D183FE3F21C8056D0060203D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D183FE4221C8056D0060203D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D183FE4421C8056D0060203D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D183FE4A21C811D30060203D /* BrunchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrunchTableViewCell.swift; sourceTree = "<group>"; };
+		D183FE4B21C811D30060203D /* BrunchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrunchTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				D183FE3821C8056B0060203D /* AppDelegate.swift */,
 				D183FE3A21C8056B0060203D /* ViewController.swift */,
+				D183FE4A21C811D30060203D /* BrunchTableViewCell.swift */,
+				D183FE4B21C811D30060203D /* BrunchTableViewCell.xib */,
 				D183FE3F21C8056D0060203D /* Assets.xcassets */,
 				D183FE4121C8056D0060203D /* LaunchScreen.storyboard */,
 				D183FE4421C8056D0060203D /* Info.plist */,
@@ -120,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D183FE4321C8056D0060203D /* LaunchScreen.storyboard in Resources */,
+				D183FE4D21C811D30060203D /* BrunchTableViewCell.xib in Resources */,
 				D183FE4021C8056D0060203D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D183FE4C21C811D30060203D /* BrunchTableViewCell.swift in Sources */,
 				D183FE3B21C8056B0060203D /* ViewController.swift in Sources */,
 				D183FE3921C8056B0060203D /* AppDelegate.swift in Sources */,
 			);
