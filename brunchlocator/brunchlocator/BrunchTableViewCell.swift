@@ -18,6 +18,9 @@ final class BrunchTableViewCell: UITableViewCell {
     @IBOutlet private var bottomContainer: UIView!
     @IBOutlet private var cafeReview: UILabel!
 
+    @IBOutlet private var topContainerToViewConstraint: NSLayoutConstraint!
+    @IBOutlet private var topContainterToBottomConstraint: NSLayoutConstraint!
+
     func configure(cafe: Cafe) {
 
     }
